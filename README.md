@@ -1,4 +1,4 @@
-# mmedica_docker
+# mMedica_docker
 # Dockerized postgresql for Asseco mMedica
 
 1 Create volume to store database files:
