@@ -1,5 +1,5 @@
 # mmedica_docker
-# Dockerized posgresql for Asseco mMedica
+# Dockerized postgresql for Asseco mMedica
 
 1 Create volume to store database files:
 ```
