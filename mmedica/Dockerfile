@@ -18,7 +18,7 @@ COPY PostgreSQL-9.5-Linux.zip /tmp
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN chmod 775 docker-entrypoint.sh && ln -s /usr/share/postgresql/9.5 /usr/lib/postgresql/9.5/share && unzip /tmp/PostgreSQL-9.5-Linux.zip -d /tmp/ && rm /tmp/PostgreSQL-9.5-Linux.zip && \
-	mv /tmp/libpq.so.5.8 /usr/lib/x86_64-linux-gnu && mv /tmp/libpqwalreceiver.so /usr/lib/postgresql/9.5/lib && rm /usr/lib/x86_64-linux-gnu/libpq.so.5 && \
-	ln -s /usr/lib/x86_64-linux-gnu/libpq.so.5.8 libpq.so.5 && ldconfig && mv -f /tmp/postgres.bki /usr/share/postgresql/9.5/postgres.bki && chmod 755 /tmp/* && \
+	mv /tmp/libpq.so.5.8 /usr/lib/x86_64-linux-gnu && mv /tmp/libpqwalreceiver.so /usr/lib/postgresql/9.5/lib && ldconfig && rm /usr/lib/x86_64-linux-gnu/libpq.so.5 && cd /usr/lib/x86_64-linux-gnu/ && \
+	ln -s /usr/lib/x86_64-linux-gnu/libpq.so.5.8 libpq.so.5 && mv -f /tmp/postgres.bki /usr/share/postgresql/9.5/postgres.bki && chmod 755 /tmp/* && \
 	mv -f /tmp/initdb /usr/lib/postgresql/9.5/bin/initdb && mv -f /tmp/pg_ctl /usr/lib/postgresql/9.5/bin/pg_ctl && mv -f /tmp/pg_dump /usr/lib/postgresql/9.5/bin/pg_dump && \
 	mv -f /tmp/pg_restore /usr/lib/postgresql/9.5/bin/pg_restore && mv -f /tmp/postgres /usr/lib/postgresql/9.5/bin/postgres && tar xf /timezone.tgz -C /usr/lib/postgresql/9.5/share/ && rm /timezone.tgz
